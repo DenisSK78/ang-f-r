@@ -4,21 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhonesComponent } from './phone/phones.component';
-import { PhoneService} from './share/phone.service';
+import { PhoneService} from './share/phone/phone.service';
 import { HttpClientModule} from '@angular/common/http';
-
+import { PersonListComponent } from './person-list/person-list.component';
+import {PersonService} from './share/person/person.service';
+import {EmailService} from './share/email/email.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhonesComponent
+    PhonesComponent,
+    PersonListComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [PhoneService],
+  providers: [PhoneService, PersonService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

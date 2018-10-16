@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PhoneService} from '../share/phone.service';
+import {PhoneService} from '../share/phone/phone.service';
 
 @Component({
   selector: 'app-phone',
@@ -13,7 +13,7 @@ export class PhonesComponent implements OnInit {
   constructor(private phoneService: PhoneService) { }
 
   ngOnInit() {
-    this.phoneService.getPhohes()
+    this.phoneService.getPhones()
       .subscribe(data => this.phones = data);
   }
 

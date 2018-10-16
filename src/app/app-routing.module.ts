@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PhonesComponent} from './phone/phones.component';
+import {PersonListComponent} from './person-list/person-list.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'phones'},
-  {path: 'phones', component: PhonesComponent}
+  {path: 'phones', component: PhonesComponent},
+  {path: 'person-list', component: PersonListComponent}
 ];
 
 @NgModule({
