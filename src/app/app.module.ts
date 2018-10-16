@@ -7,16 +7,20 @@ import { PhonesComponent } from './phone/phones.component';
 import { PhoneService} from './share/phone/phone.service';
 import { HttpClientModule} from '@angular/common/http';
 import { PersonListComponent } from './person-list/person-list.component';
-import {PersonService} from './share/person/person.service';
-import {EmailService} from './share/email/email.service';
+import { PersonService} from './share/person/person.service';
+import { EmailService} from './share/email/email.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhonesComponent,
-    PersonListComponent
+    PersonListComponent,
+    PersonDetailComponent
   ],
   imports: [
+    NgbModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule

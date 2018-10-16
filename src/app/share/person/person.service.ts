@@ -9,7 +9,13 @@ export class PersonService {
 
   constructor(private http: HttpClient) {}
 
+  public personList: Person[];
+
   getPersonList(): Observable<Person[]> {
     return this.http.get<Person[]>(environment.apiUrl);
+  }
+
+  getById(id: number): Observable<Person> {
+    return this.http.get<Person>(environment.apiUrl + '/' + id);
   }
 }

@@ -1,8 +1,12 @@
-<p>
-  person-list works!
-</p>
-<table>
-  <tr *ngFor="let person of personList">
-    <td>ID: {{person.id}}</td><td> Number: {{person.name}}</td>
-  </tr>
-</table>
+
+<div class="container">
+  <table class="table">
+    <tr *ngFor="let person of personList">
+      <td>{{person.id}}</td>
+      <td>{{person.name}}</td>
+      <td><a *ngIf="">{{person.phones[0].phoneNumber}}</a></td>
+      <td><button (click)="onDetail(person)" type="button" class="btn btn-outline-info" >Detail</button></td>
+    </tr>
+  </table>
+</div>
+
