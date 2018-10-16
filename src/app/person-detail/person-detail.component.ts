@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Person} from '../share/person/person.model';
 import {PersonService} from '../share/person/person.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Email} from '../share/email/email.model';
+import {Phone} from '../share/phone/phone.model';
+// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-person-detail',
@@ -11,6 +14,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class PersonDetailComponent implements OnInit {
 
   public person: Person;
+  public emails: Email[];
+  public phones: Phone[];
 
   constructor(private personService: PersonService, private currentRoute: ActivatedRoute) { }
 

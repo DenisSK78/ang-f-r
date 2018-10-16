@@ -1,0 +1,11 @@
+.value{
+  width: auto;
+  float: left;
+  margin-right: 10px;
+}
+
+.property{
+  font-weight: bold;
+  width: 100px;
+  float: left;
+}

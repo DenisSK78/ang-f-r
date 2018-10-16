@@ -4,11 +4,14 @@
     Person detail:
   </p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{person.name}}</li>
-    <li class="list-group-item">{{person.address}}</li>
-    <li class="list-group-item">{{person.comment}}</li>
-    <li class="list-group-item"><a>{{person.emails[0].email}}</a></li>
-    <li class="list-group-item"><a>{{person.phones[0].phoneNumber}}</a></li>
+    <li class="list-group-item"><div class="property">Name: </div>{{person.name}}</li>
+    <li class="list-group-item"><div class="property">Address: </div>{{person.address}}</li>
+    <li class="list-group-item"><div class="property">Comment: </div>{{person.comment}}</li>
+    <li class="list-group-item"><div class="property">Emails: </div>
+      <div *ngFor="let email of person.emails" class="value">{{email.email}}</div>
+    </li>
+    <li class="list-group-item"><div class="property">Phones: </div>
+      <div *ngFor="let phone of person.phones" class="value">{{phone.phoneNumber}}</div>
+    </li>
   </ul>
 </div>
-
