@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Person} from '../share/person/person.model';
 import {PersonService} from '../share/person/person.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Email} from '../share/email/email.model';
-import {Phone} from '../share/phone/phone.model';
-// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-person-detail',
@@ -13,17 +9,26 @@ import {Phone} from '../share/phone/phone.model';
 })
 export class PersonDetailComponent implements OnInit {
 
-  public person: Person;
-  public emails: Email[];
-  public phones: Phone[];
+  public name: string;
+  public emails = [];
+  public phones = [];
+  public id: number;
+  public address: string;
+  public comment: string;
 
   constructor(private personService: PersonService, private currentRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let id: number;
     id = +this.currentRoute.snapshot.paramMap.get('id');
-    this.person = this.personService.getById(id)
-      .subscribe(data => this.person = data);
+    this.personService.getById(id).subscribe(data => {
+      this.id = data.id;
+      this.name = data.name;
+      this.phones = data.phones;
+      this.emails = data.emails;
+      this.address = data.address;
+      this.comment = data.comment;
+    });
   }
 
 }

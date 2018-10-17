@@ -4,14 +4,31 @@
     Person detail:
   </p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><div class="property">Name: </div>{{person.name}}</li>
-    <li class="list-group-item"><div class="property">Address: </div>{{person.address}}</li>
-    <li class="list-group-item"><div class="property">Comment: </div>{{person.comment}}</li>
+    <li class="list-group-item"><div class="property">Name: </div>{{name}}</li>
+    <li class="list-group-item"><div class="property">Address: </div>{{address}}</li>
+    <li class="list-group-item"><div class="property">Comment: </div>{{comment}}</li>
     <li class="list-group-item"><div class="property">Emails: </div>
-      <div *ngFor="let email of person.emails" class="value">{{email.email}}</div>
+      <div *ngFor="let email of emails" class="value">{{email.email}}</div>
     </li>
     <li class="list-group-item"><div class="property">Phones: </div>
-      <div *ngFor="let phone of person.phones" class="value">{{phone.phoneNumber}}</div>
+      <div *ngFor="let phone of phones" class="value">{{phone.phoneNumber}}</div>
     </li>
   </ul>
+
+  <div class="container detail-bar">
+    <nav>
+      <div class="row">
+        <div class="col">
+          <div class="mx-auto" style="width: 120px;">
+            <a href="person-list"  class="btn btn btn-outline-info detail-btn">Back</a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mx-auto" style="width: 120px;">
+            <button class="btn btn btn-outline-info detail-btn">Edit</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
