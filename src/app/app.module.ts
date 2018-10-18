@@ -11,19 +11,23 @@ import { PersonService} from './share/person/person.service';
 import { EmailService} from './share/email/email.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { PersonEditComponent } from './person-edit/person-edit.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhonesComponent,
     PersonListComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    PersonEditComponent
   ],
   imports: [
     NgbModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [PhoneService, PersonService, EmailService],
   bootstrap: [AppComponent]

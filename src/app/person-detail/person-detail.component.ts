@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../share/person/person.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Person} from '../share/person/person.model';
 
 @Component({
   selector: 'app-person-detail',
@@ -9,26 +10,30 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class PersonDetailComponent implements OnInit {
 
-  public name: string;
   public emails = [];
   public phones = [];
-  public id: number;
-  public address: string;
-  public comment: string;
+  public person: Person;
 
-  constructor(private personService: PersonService, private currentRoute: ActivatedRoute) { }
+  constructor(private personService: PersonService,
+              private currentRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     let id: number;
     id = +this.currentRoute.snapshot.paramMap.get('id');
     this.personService.getById(id).subscribe(data => {
-      this.id = data.id;
-      this.name = data.name;
-      this.phones = data.phones;
-      this.emails = data.emails;
-      this.address = data.address;
-      this.comment = data.comment;
+      this.person = data;
+      this.emails = this.person.emails;
+      this.phones = this.person.phones;
     });
+  }
+
+  onGoToEdit() {
+    this.router.navigate(['person', 'edit', this.person.id]);
+  }
+
+  onGoToBack() {
+    this.router.navigate(['person-list']);
   }
 
 }

@@ -4,7 +4,7 @@
     <tr *ngFor="let person of personList">
       <td>{{person.id}}</td>
       <td>{{person.name}}</td>
-      <td><a *ngIf="person.phones[0]!=null">{{person.phones[0].phoneNumber}}</a></td>
+      <td><div *ngIf="person.phones[0]!=null">{{person.phones[0].phoneNumber}}</div></td>
       <td><button (click)="onDetail(person)" type="button" class="btn btn-outline-info" >Detail</button></td>
     </tr>
   </table>

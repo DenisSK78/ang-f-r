@@ -1,0 +1,76 @@
+<div class="container" *ngIf="person" xmlns:trackBy="http://www.w3.org/1999/xhtml">
+  <h5>
+    Person edit:
+  </h5>
+  <form  #values="ngForm" (ngSubmit)="values">
+
+    <div>
+      <div>
+        <label>Name: </label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="person.name" name="name">
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label>Address: </label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="person.address" name="address">
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label>Comment: </label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="person.comment" name="comment">
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label>Phones: </label>
+      </div>
+      <div *ngFor="let phone of phones; let i = index">
+        <input type="text" name="phone_{{i}}"
+               [(ngModel)]="phone.phoneNumber">
+        <button type="button" (click)=onDeletePhone(i)>Delete</button>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label>Emails: </label>
+      </div>
+      <div *ngFor="let email of emails; let i = index">
+        <input  type="text" name="email_{{i}}"
+                [(ngModel)]="email.emailVal">
+        <button type="button" (click)=onDeleteEmail(i)>Delete</button>
+      </div>
+    </div>
+
+
+    <div class="container edit-bar">
+      <nav>
+        <div class="row">
+          <div class="col">
+            <div class="mx-auto" style="width: 120px;">
+              <a (click)="onGoToBack()"  class="btn btn btn-outline-info edit-btn">Back</a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mx-auto" style="width: 120px;">
+              <a (click)="onSave(person)"  class="btn btn btn-outline-info edit-btn">Save</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+  </form>
+</div>
