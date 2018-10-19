@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Person} from './person.model';
-import {catchError, map, tap} from 'rxjs/operators';
-import {$} from 'protractor';
-import {RequestOptions} from '@angular/http';
 
 @Injectable()
 export class PersonService {
@@ -19,22 +16,18 @@ export class PersonService {
   }
 
   getById(id: number): Observable<Person> {
-    return this.http.get<Person>(environment.apiUrl + '/' + id);
+    return this.http.get<Person>(`${environment.apiUrl}/person/${id}`);
   }
 
-  updatePerson(person: Person) {
-    const headers = new HttpHeaders().append( 'Content-Type', 'application/json');
-    const body = JSON.stringify(person);
-    this.http.put(environment.apiUrl + '/update', body, { headers: headers })
-      .toPromise();
-
+  updatePerson(person: Person): Observable<Person> {
+    return this.http.put<Person>(`${environment.apiUrl}/person/update`, person);
   }
 
+  deletePerson(id: number): Observable<Person> {
+    return this.http.delete<Person>(`${environment.apiUrl}/person/delete/${id}`);
+  }
 
-
-
-// .subscribe(
-//     success => alert("Done"),
-//   error => alert(error)
-// );
+  savePerson(person: Person): Observable<Person> {
+    return this.http.post<Person>( `${environment.apiUrl}/person/save`, person);
+  }
 }

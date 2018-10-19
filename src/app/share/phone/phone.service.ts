@@ -9,8 +9,12 @@ export class PhoneService {
 
   constructor(private http: HttpClient) {}
 
-  getPhones(): Observable<Phone[]> {
-    return this.http.get<Phone[]>(environment.apiUrl + '/phones');
+  deletePhone(id: number): Observable<Phone> {
+    return this.http.delete<Phone>(`${environment.apiUrl}/phone/${id}`);
+  }
+
+  savePhone(phone: Phone): Observable<Phone> {
+    return this.http.post<Phone>( `${environment.apiUrl}/phone`, phone);
   }
 
 }

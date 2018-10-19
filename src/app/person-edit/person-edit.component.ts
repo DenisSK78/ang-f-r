@@ -34,8 +34,8 @@ export class PersonEditComponent implements OnInit {
     this.router.navigate(['person', 'detail', this.person.id]);
   }
 
-  onSave(person) {
-    this.personService.updatePerson(person);
+  onEdit(person) {
+    this.personService.updatePerson(person).subscribe(data => person = data);
     this.router.navigateByUrl('person/detail/' + this.person.id);
   }
 
