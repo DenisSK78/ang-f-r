@@ -4,6 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Person} from '../share/person/person.model';
 import {Email} from '../share/email/email.model';
 import {Phone} from '../share/phone/phone.model';
+import {PhoneService} from '../share/phone/phone.service';
+import {EmailService} from '../share/email/email.service';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-person-edit',
@@ -18,15 +21,15 @@ export class PersonEditComponent implements OnInit {
 
   constructor(private personService: PersonService,
               private currentRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private phoneService: PhoneService,
+              private emailService: EmailService) { }
 
   ngOnInit() {
     let id: number;
     id = +this.currentRoute.snapshot.paramMap.get('id');
     this.personService.getById(id).subscribe(data => {
-      this.person = data;
-      this.emails = this.person.emails;
-      this.phones = this.person.phones;
+      this.updAll(data);
     });
   }
 
@@ -40,12 +43,18 @@ export class PersonEditComponent implements OnInit {
   }
 
   onDeleteEmail(index: number) {
-    console.log('del: ' +  index);
-    this.emails.splice(index, 1);
+    this.emailService.deleteEmail(this.person.emails[index].id)
+      .subscribe(data => this.updAll(data));
   }
 
   onDeletePhone(index: number) {
-    console.log('del: ' + index );
-    this.phones.splice(index, 1);
+    this.phoneService.deletePhone(this.person.phones[index].id)
+      .subscribe(data => this.updAll(data));
+  }
+
+  updAll(data) {
+    this.person = data;
+    this.emails = this.person.emails;
+    this.phones = this.person.phones;
   }
 }

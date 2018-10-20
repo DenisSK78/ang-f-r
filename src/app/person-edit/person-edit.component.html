@@ -31,14 +31,14 @@
       </div>
     </div>
 
-    <div>
+    <div *ngIf="person.phones[0]" >
       <div>
         <label>Phones: </label>
       </div>
       <div *ngFor="let phone of phones; let i = index">
         <input type="text" name="phone_{{i}}"
                [(ngModel)]="phone.phoneNumber">
-        <button type="button" (click)=onDeletePhone(i)>Delete</button>
+        <button type="button" (click)=onDeletePhone(i)>Delete</button> {{phone?.id}} | {{i}} | {{phones?.length}}
       </div>
     </div>
 

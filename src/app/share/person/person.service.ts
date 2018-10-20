@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Person} from './person.model';
+import {RequestMethod, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class PersonService {
@@ -23,8 +24,8 @@ export class PersonService {
     return this.http.put<Person>(`${environment.apiUrl}/person/update`, person);
   }
 
-  deletePerson(id: number): Observable<Person> {
-    return this.http.delete<Person>(`${environment.apiUrl}/person/delete/${id}`);
+  deletePerson(person: Person): Observable<Person> {
+    return this.http.delete<Person>(`${environment.apiUrl}/person/delete/` + person.id);
   }
 
   savePerson(person: Person): Observable<Person> {
