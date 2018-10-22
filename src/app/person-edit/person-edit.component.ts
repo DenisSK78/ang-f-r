@@ -6,7 +6,7 @@ import {Email} from '../share/email/email.model';
 import {Phone} from '../share/phone/phone.model';
 import {PhoneService} from '../share/phone/phone.service';
 import {EmailService} from '../share/email/email.service';
-import {of} from 'rxjs';
+
 
 @Component({
   selector: 'app-person-edit',
@@ -28,9 +28,8 @@ export class PersonEditComponent implements OnInit {
   ngOnInit() {
     let id: number;
     id = +this.currentRoute.snapshot.paramMap.get('id');
-    this.personService.getById(id).subscribe(data => {
-      this.updAll(data);
-    });
+    this.personService.getById(id)
+      .subscribe(data => this.updAll(data));
   }
 
   onGoToBack() {
@@ -38,7 +37,8 @@ export class PersonEditComponent implements OnInit {
   }
 
   onEdit(person) {
-    this.personService.updatePerson(person).subscribe(data => person = data);
+    this.personService.updatePerson(person)
+      .subscribe(data => this.updAll(data));
     this.router.navigateByUrl('person/detail/' + this.person.id);
   }
 
@@ -56,5 +56,15 @@ export class PersonEditComponent implements OnInit {
     this.person = data;
     this.emails = this.person.emails;
     this.phones = this.person.phones;
+  }
+
+  addNewPhone() {
+    this.person.phones.push(new Phone());
+    console.log('Add phone');
+  }
+
+  addNewEmail() {
+    this.person.emails.push(new Email());
+    console.log('Add email');
   }
 }

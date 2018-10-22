@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div *ngIf="person.phones[0]" >
+    <div>
       <div>
         <label>Phones: </label>
       </div>
@@ -40,6 +40,7 @@
                [(ngModel)]="phone.phoneNumber">
         <button type="button" (click)=onDeletePhone(i)>Delete</button> {{phone?.id}} | {{i}} | {{phones?.length}}
       </div>
+      <button type="button" (click)=addNewPhone()>Add phone</button>
     </div>
 
     <div>
@@ -51,6 +52,7 @@
                 [(ngModel)]="email.emailVal">
         <button type="button" (click)=onDeleteEmail(i)>Delete</button>
       </div>
+      <button type="button" (click)=addNewEmail()>Add email</button>
     </div>
 
 
