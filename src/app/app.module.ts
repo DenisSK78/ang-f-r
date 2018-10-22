@@ -13,13 +13,15 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { PersonEditComponent } from './person-edit/person-edit.component';
 import { FormsModule } from '@angular/forms';
 import { PersonResolver } from './share/person/person.rsolver';
+import { PersonNewComponent } from './person-new/person-new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonListComponent,
     PersonDetailComponent,
-    PersonEditComponent
+    PersonEditComponent,
+    PersonNewComponent
   ],
   imports: [
     NgbModule,

@@ -22,4 +22,8 @@ export class PersonListComponent implements OnInit {
   onDetail(person: Person) {
     this.router.navigate(['person', 'detail', person.id]);
   }
+
+  onNewPerson() {
+    this.router.navigate(['person', 'new']);
+  }
 }
