@@ -56,7 +56,7 @@
       <div *ngFor="let email of emails; let i = index">
         <div class="input-group mb-3">
           <input type="text"  class="form-control"
-                 name="phone_{{i}}" [(ngModel)]="email.emailVal"
+                 name="email_{{i}}" [(ngModel)]="email.emailVal"
                  placeholder="New email" aria-label="New email"
                  aria-describedby="new email">
           <div class="input-group-append">

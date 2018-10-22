@@ -35,7 +35,6 @@ export class PersonNewComponent implements OnInit {
 
   onSave(person) {
     this.person = person;
-    console.log(person);
     this.personService.savePerson(this.person)
       .subscribe(data => {
         this.updAll(data);
