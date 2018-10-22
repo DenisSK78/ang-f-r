@@ -60,11 +60,14 @@ export class PersonEditComponent implements OnInit {
 
   addNewPhone() {
     this.person.phones.push(new Phone());
-    console.log('Add phone');
   }
 
   addNewEmail() {
     this.person.emails.push(new Email());
-    console.log('Add email');
+  }
+
+  onDeletePerson() {
+    this.personService.deletePerson(this.person.id)
+      .subscribe(() => this.router.navigateByUrl('person-list'));
   }
 }

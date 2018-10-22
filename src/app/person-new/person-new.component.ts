@@ -39,7 +39,6 @@ export class PersonNewComponent implements OnInit {
     this.personService.savePerson(this.person)
       .subscribe(data => {
         this.updAll(data);
-        console.log(this.person);
         this.router.navigateByUrl('person-list');
       });
   }
@@ -61,12 +60,10 @@ export class PersonNewComponent implements OnInit {
   addNewPhone() {
     this.person.phones.push(new Phone());
     this.phones = this.person.phones;
-    console.log('Add phone');
   }
 
   addNewEmail() {
     this.person.emails.push(new Email());
     this.emails = this.person.emails;
-    console.log('Add email');
   }
 }
