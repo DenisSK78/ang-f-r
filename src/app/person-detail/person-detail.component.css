@@ -18,3 +18,11 @@
   padding: 30px;
 }
 
+#a-href{
+  color: #17A1B7;
+}
+
+#a-href:hover {
+  color: white;
+}
+

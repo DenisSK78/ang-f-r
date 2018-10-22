@@ -6,53 +6,65 @@
 
     <div>
       <div>
-        <label>Name: </label>
+        <label><h6>Name: </h6></label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="person.name" name="name">
-      </div>
-    </div>
-
-    <div>
-      <div>
-        <label>Address: </label>
-      </div>
-      <div>
-        <input type="text" [(ngModel)]="person.address" name="address">
+        <input type="text" [(ngModel)]="person.name" name="name" class="input-group mb-3 form-control">
       </div>
     </div>
 
     <div>
       <div>
-        <label>Comment: </label>
+        <label><h6>Address: </h6></label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="person.comment" name="comment">
+        <input type="text" [(ngModel)]="person.address" name="address" class="input-group mb-3 form-control">
       </div>
     </div>
 
     <div>
       <div>
-        <label>Phones: </label>
+        <label><h6>Comment: </h6></label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="person.comment" name="comment" class="input-group mb-3 form-control">
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label><h6>Phones: </h6></label>
       </div>
       <div *ngFor="let phone of phones; let i = index">
-        <input type="text" name="phone_{{i}}"
-               [(ngModel)]="phone.phoneNumber">
-        <button type="button" (click)=onDeletePhone(i)>Delete</button>
+        <div class="input-group mb-3">
+          <input type="text"  class="form-control"
+                 name="phone_{{i}}" [(ngModel)]="phone.phoneNumber"
+                 placeholder="New phone" aria-label="New phone"
+                 aria-describedby="new phone">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)=onDeletePhone(i) type="button" id="delete phone">Delete</button>
+          </div>
+        </div>
       </div>
-      <button type="button" (click)=addNewPhone()>Add phone</button>
+      <button type="button" (click)=addNewPhone() class="btn btn btn-outline-info edit-btn">Add phone</button>
     </div>
 
     <div>
       <div>
-        <label>Emails: </label>
+        <label><h6>Emails: </h6></label>
       </div>
       <div *ngFor="let email of emails; let i = index">
-        <input  type="text" name="email_{{i}}"
-                [(ngModel)]="email.emailVal">
-        <button type="button" (click)=onDeleteEmail(i)>Delete</button>
+        <div class="input-group mb-3">
+          <input type="text"  class="form-control"
+                 name="email_{{i}}" [(ngModel)]="email.emailVal"
+                 placeholder="New email" aria-label="New email"
+                 aria-describedby="new email">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)=onDeleteEmail(i) type="button" id="delete email">Delete</button>
+          </div>
+        </div>
       </div>
-      <button type="button" (click)=addNewEmail()>Add email</button>
+      <button type="button" (click)=addNewEmail() class="btn btn btn-outline-info edit-btn">Add email</button>
     </div>
 
 
@@ -61,17 +73,17 @@
         <div class="row">
           <div class="col">
             <div class="mx-auto" style="width: 120px;">
-              <a (click)="onGoToBack()"  class="btn btn btn-outline-info edit-btn">Back</a>
+              <a (click)="onGoToBack()" id="a-href" class="btn btn btn-outline-info edit-btn">Back</a>
             </div>
           </div>
           <div class="col">
             <div class="mx-auto" style="width: 120px;">
-              <a (click)="onEdit(person)" class="btn btn btn-outline-info edit-btn">Save edits</a>
+              <button type="button" (click)="onEdit(person)" class="btn btn btn-outline-info edit-btn">Save edits</button>
             </div>
           </div>
           <div class="col">
             <div class="mx-auto" style="width: 120px;">
-              <a (click)="onDeletePerson()"  class="btn btn btn-outline-info edit-btn">Delete</a>
+              <button (click)="onDeletePerson()"  class="btn btn btn-outline-info edit-btn">Delete</button>
             </div>
           </div>
         </div>

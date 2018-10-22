@@ -1,7 +1,16 @@
-.edit-btn{
-  width: 140px;
+.edit-bar{
+  margin-top: 30px;
 }
 
-.edit-bar{
-  margin-top: 50px;
+.edit-btn{
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+#a-href{
+  color: #17A1B7;
+}
+
+#a-href:hover {
+  color: white;
 }

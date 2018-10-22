@@ -43,13 +43,21 @@ export class PersonEditComponent implements OnInit {
   }
 
   onDeleteEmail(index: number) {
-    this.emailService.deleteEmail(this.person.emails[index].id)
-      .subscribe(data => this.updAll(data));
+    if (this.person.emails[index].id === undefined) {
+      this.person.emails.splice(index, 1);
+    } else {
+      this.emailService.deleteEmail(this.person.emails[index].id)
+        .subscribe(data => this.updAll(data));
+    }
   }
 
   onDeletePhone(index: number) {
-    this.phoneService.deletePhone(this.person.phones[index].id)
-      .subscribe(data => this.updAll(data));
+    if (this.person.phones[index].id === undefined) {
+      this.person.phones.splice(index, 1);
+    } else {
+      this.phoneService.deletePhone(this.person.phones[index].id)
+        .subscribe(data => this.updAll(data));
+    }
   }
 
   updAll(data) {
